@@ -4,7 +4,7 @@ SQL Portfolio
 CREATE TABLE stationery_store (ID INTEGER PRIMARY KEY, name TEXT, quantity INTEGER, aisle INTEGER,clearance TEXT);
 
 INSERT INTO stationery_store VALUES (1,"pens",77,4,"no");
-INSERT INTO stationery_store VALUES(2,"pencils",78,5,"no");
+INSERT INTO stationery_store VALUES (2,"pencils",78,5,"no");
 INSERT INTO stationery_store VALUES (3,"erasers",115, 1,"no");
 INSERT INTO stationery_store VALUES (4,"rulers",119,4,"yes");
 INSERT INTO stationery_store VALUES (5,"highlighters",47,3,"no");
@@ -22,4 +22,4 @@ INSERT INTO stationery_store VALUES (15,"pencil cases", 41,1,"yes");
 
 SELECT * FROM stationery_store;
 SELECT * FROM stationery_store where clearance = "yes" order by quantity;
-SELECT MAX(quantity) from stationery_store ;
+SELECT MAX(quantity) from stationery_store;
