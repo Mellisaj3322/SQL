@@ -20,6 +20,11 @@ INSERT INTO stationery_store VALUES (14,"notebooks",63,3,"no");
 INSERT INTO stationery_store VALUES (15,"pencil cases", 41,1,"yes");
 
 
+--------display all data in one table.
 SELECT * FROM stationery_store;
+
+------display the stationery items that are on clearance sale and order by quantity.
 SELECT * FROM stationery_store where clearance = "yes" order by quantity;
+
+------display the most stationery item in the store.
 SELECT MAX(quantity) from stationery_store;
