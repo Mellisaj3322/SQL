@@ -1,0 +1,48 @@
+CREATE TABLE top_movies (id INTEGER PRIMARY KEY AUTOINCREMENT, movie_name TEXT,rating INTEGER, released_date INTEGER,budget INTEGER);
+
+INSERT INTO top_movies(movie_name,rating,released_date, budget) VALUES ("Get Out", 7.7, 2017, 4500000);
+INSERT INTO top_movies(movie_name,rating,released_date, budget) VALUES ("Pulp Fiction",8.9,1994,8500000);
+INSERT INTO top_movies(movie_name,rating,released_date, budget) VALUES ("Knives Out",7.9,2019,40000000);
+INSERT INTO top_movies(movie_name,rating,released_date, budget) VALUES ("Titanic",7.9,1997,200000000);
+INSERT INTO top_movies(movie_name,rating,released_date, budget) VALUES ("The Avengers",8.4,2019,356000000);
+INSERT INTO top_movies(movie_name, rating,released_date, budget) VALUES ("The Avengers",8,2012,220000000);
+INSERT INTO top_movies(movie_name,rating,released_date, budget) VALUES ("Whiplash",8.5,2014,3300000);
+INSERT INTO top_movies(movie_name,rating,released_date, budget) VALUES ("The Dark Knight",9,2007,185000000);
+INSERT INTO top_movies(movie_name, rating,released_date, budget) VALUES ("Forrest Gump",8.8,1994,55000000);
+INSERT INTO top_movies(movie_name, rating,released_date, budget) VALUES ("A Quiet Place",7.5,2018,17000000);
+INSERT INTO top_movies(movie_name, rating,released_date, budget) VALUES ("A Silent of the Lambs",8.6,1991,19000000);
+INSERT INTO top_movies(movie_name, rating,released_date, budget) VALUES ("Pirates of the Carribean", 8.1,2003,140000000);
+ INSERT INTO top_movies(movie_name, rating,released_date, budget) VALUES ("Pirates of the Carribean",7.3,2006,225000000);
+INSERT INTO top_movies(movie_name, rating,released_date, budget) VALUES ("Little Miss Sunshine", 7.8,2006,8000000);
+INSERT INTO top_movies(movie_name, rating,released_date, budget) VALUES ("Lost in Translation",7.7,2003,4000000);
+INSERT INTO top_movies(movie_name, rating,released_date, budget) VALUES ("Conjuring",7.5,2013,20000000);
+
+SELECT * FROM top_movies;
+
+SELECT AVG(rating) from top_movies;
+SELECT MAX(budget) from top_movies;
+SELECT MIN(released_date) from top_movies;
+
+ SELECT movie_name, avg(rating) AS avg_rating FROM top_movies GROUP BY movie_name
+ HAVING avg_rating > 8;
+
+ 
+ SELECT movie_name FROM top_movies GROUP BY movie_name
+ HAVING count(*) >= 2;
+ 
+ SELECT movie_name,round(rating*0.5) AS five_star_rating,released_date FROM top_movies;
+ 
+ SELECT movie_name,budget,
+ CASE
+        WHEN budget > 100000000 then "Very High budget movie"
+        WHEN budget > 50000000  then "High budget movie"
+        WHEN budget > 5000000 then "Mid budget movie"
+        ELSE "Low budget movie"
+        END AS "Top movie budget rank" FROM top_movies
+        GROUP  BY "movie_name";
+        
+SELECT movie_name FROM top_movies WHERE released_date >2012 AND rating >8;
+
+ 
+ SELECT movie_name FROM top_movies WHERE rating < 7.8 OR released_date < 1999;
+ 
