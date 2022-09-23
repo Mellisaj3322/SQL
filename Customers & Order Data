@@ -1,16 +1,47 @@
 In this SQL project, I would like to show some examples of the codes I've written from the database "customers and order data"
 
 
-(1) How many orders were placed in January?
-SELECT count(orderID) FROM BIT_DB.JanSales 
+(1) How many orders were placed in February?
+SELECT count(orderID) FROM BIT_DB.FebSales 
 
-(2) How many of those orders were for an iPhone?
+
+
+(2) How many of those orders were for Wired Headphones in January?
 SELECT count(orderID) FROM BIT_DB.JanSales 
-WHERE product = 'iPhone'
+WHERE product = 'Wired Headphones'
+
 
 (3) Select the customer account numbers for all the orders that were placed in February
-SELECT  acctnum 
+SELECT acctnum 
 from BIT_DB. customers cust 
 INNER JOIN BIT_DB.FebSales feb
 ON cust.order_id = Feb.orderid
 
+(4)Which product was sold the chepest in May and what was the price?
+SELECT distinct product, price 
+FROM BIT_DB.MaySales 
+ORDER BY price asc limit 1
+
+(5) What is the total revenue of each product sold in April?
+SELECT SUM(quantity)* price AS revenue, product
+FROM BIT_DB.AprSales GROUP BY product
+
+
+(6) which product was sold at 459 4th St, San Francisco, CA 94016 in January, how many were sold and what was the revenue?
+SELECT product, sum(quantity), 
+sum(quantity)*price As revenue 
+FROM BIT_DB.JanSales
+WHERE location =  '459 4th St, San Francisco, CA 94016'
+
+(7)How many customers ordered more than 5 products at a time in January, and what was the average amount spent for those customers?
+
+SELECT count(cust.acctnum), 
+avg(quantity*price)
+FROM BIT_DB.JanSales jan
+LEFT JOIN BIT_DB.customers cust
+On jan.orderid= cust.order_ID
+WHERE jan.quantity > 5
+
+
+
+ 
