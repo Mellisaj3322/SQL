@@ -27,7 +27,7 @@ time_signature integer NOT NULL)
 
 ***** Step 2 : Inserting Spotify Data *****
 
-I iimported the Spotify data file from Kaggle into the SQLite Studio and made sure it is CSV file in data source type
+I imported the Spotify data file from Kaggle into the SQLite Studio and made sure it is CSV file in data source type
 and started to query the table.
 
 ***** Step 3 : Creating analytics questions and writing SQL codes *****
@@ -39,4 +39,21 @@ ORDER BY popularity desc limit 5
 Question (2) : What song is the most energetic?
 SELECT track_name, artist_name, energy FROM BIT_DB.SpotifyData
 ORDER BY energy desc LIMIT 1
+
+Question (3) : What song has the least danceability?
+SELECT track_name, artist_name, min(danceability)FROM BIT_DB.SpotifyData
+
+Question (4) : How many Doja Cat songs are there in this chart?
+SELECT artist_name , COUNT(track_name)AS total_songs FROM BIT_DB.Spotifydata
+WHERE artist_name = 'Doja Cat'
+
+Question (5) : What song has the key of C ?
+(Integers map to pitches using standard Pitch Class notation. 
+E.g. 0 = C, 1 = C♯/D♭, 2 = D, and so on)
+SELECT track_name, artist_name, key FROM BIT_DB.Spotifydata
+WHERE key= 0
+
+Question (6) : Which artist name displayed more than 1 time in the chart?
+SELECT artist_name FROM BIT_DB.Spotifydata
+GROUP BY artist_name HAVING COUNT(*)>= 2
 
