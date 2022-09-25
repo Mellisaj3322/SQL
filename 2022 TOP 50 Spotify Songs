@@ -57,7 +57,7 @@ Question (6) : Which artist name displayed more than 1 time in the chart?
 SELECT artist_name FROM BIT_DB.Spotifydata
 GROUP BY artist_name HAVING COUNT(*)>= 2
 
-Question (7): How could you show the artist names with the average popularity that is 90 or above and add the 'top star' tag
+Question (7): How could you show the artist names with the average popularity that is 90 or above and add the 'top star' tag?
 ### using a CTE (Coomon Table Expression)###
 WITH popularity_average_CTE AS
 (SELECT s.artist_name, AVG(s.popularity)
