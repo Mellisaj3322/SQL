@@ -1,0 +1,32 @@
+In this project,I'd like to show you how to use alter, update and delete in SQL by using the data from CashApp
+
+#1 we craeted the table and inserted te data sets *****
+CREATE TABLE CashApp (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    Name TEXT,
+    Date TEXT,
+    Amount INTEGER);
+    
+INSERT INTO CashApp (Name,Date,Amount) Values ("Destiny", "2022-07-13",195);
+INSERT INTO CashApp (Name,Date,Amount) Values ("Zoe", "2022-08-21",335);
+INSERT INTO CashApp (Name,Date,Amount) Values ("Katie", "2022-09-01",73);
+ SELECT * FROM CashApp;
+ 
+ 
+ 
+#2 I used "ALTER"  to add the Instant_deposit column into the table
+ALTER TABLE CashApp ADD Instant_Deposit TEXT;
+SELECT * FROM CashApp;
+ 
+ 
+ 
+ #3 I used "UPDATE" to input additional data into the instant_deposit column
+UPDATE CashApp SET Instant_Deposit = 'yes' WHERE id = 1;
+UPDATE CashApp SET Instant_Deposit = 'no' WHERE id = 2;
+UPDATE CashApp SET Instant_Deposit = 'yes' WHERE id = 3;
+SELECT * FROM CashApp;
+
+
+#4 Iused "DELETE" to remove the row that I dont want it to display in the table
+DELETE FROM CashApp WHERE id = 2;
+SELECT * FROM CashApp;
