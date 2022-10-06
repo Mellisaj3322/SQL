@@ -8,3 +8,16 @@ ON art.artistid = alb.artistid
 WHERE art.name = 'Deep Purple'
 
 
+#2 How many customers are there who live in Canada?
+SELECT count(country)FROM chinook.customers
+WHERE country = 'Canada'
+
+#3 Display the customers who use gmail accounts
+SELECT firstname, lastname FROM chinook.customers
+WHERE email LIKE '%@gmail.com%'
+
+#4 Display the customer name list whose their sales agent is "Margaret Park" 
+SELECT emp.lastname AS " SalesAgent", cust.firstname, cust.lastname
+FROM chinook.employees emp
+JOIN chinook.Customers cust ON cust.SupportRepId = emp.EmployeeId
+WHERE emp.lastname like '%Park%' 
