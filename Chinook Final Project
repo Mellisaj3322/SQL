@@ -1,0 +1,10 @@
+For this project, I would like to show you what I have written SQL codes from 'Chinook' Database as its my final project
+
+#1 Display all the album names of the artist "Deep Purple"
+SELECT art.name,alb.title 
+FROM chinook.artists  art
+JOIN chinook.albums alb 
+ON art.artistid = alb.artistid
+WHERE art.name = 'Deep Purple'
+
+
