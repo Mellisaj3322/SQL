@@ -21,3 +21,43 @@ SELECT emp.lastname AS " SalesAgent", cust.firstname, cust.lastname
 FROM chinook.employees emp
 JOIN chinook.Customers cust ON cust.SupportRepId = emp.EmployeeId
 WHERE emp.lastname like '%Park%' 
+
+#5 What was total sales in "USA"?
+SELECT count(billingcountry)
+FROM chinook.invoices
+WHERE billingcountry = 'USA'
+
+#6 What was the average sales per day in 2013?
+SELECT avg(Total)
+FROM chinook.Invoices
+WHERE InvoiceDate BETWEEN '2013-01-01' AND '2013-12-31';
+
+#7 Who had the least sales in 2010?
+SELECT emp.FirstName, emp.LastName,
+ROUND(SUM(Inv.Total), 2) as 'Total Sales' 
+FROM chinook.Employees emp
+JOIN chinook.Customers cust 
+ON cust.SupportRepId = emp.EmployeeId
+JOIN chinook.Invoices Inv 
+ON Inv.CustomerId = cust.CustomerId
+WHERE emp.Title = 'Sales Support Agent' 
+AND Inv.InvoiceDate LIKE '2010%' 
+GROUP BY emp.FirstName
+ORDER BY (round(sum(Inv.Total), 2))  ASC LIMIT 1
+
+#8 Display top 3 customers who purchased the most
+SELECT cust.firstname,cust.lastname, inv.total
+FROM chinook.customers cust
+JOIN chinook.invoices inv
+ON cust.customerid = inv.customerid
+order BY inv.total desc limit 3
+
+#9 Display tracks that their album is 'Angel Dust'
+SELECT t.name, a.title
+FROM chinook.albums a
+JOIN chinook.tracks t
+ON a.albumid = t.albumid
+where a.title = "Angel Dust"
+
+
+
